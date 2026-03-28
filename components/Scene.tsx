@@ -267,15 +267,16 @@ export default function Scene() {
     <Canvas camera={{ position: [0, 5, 10], fov: 60 }} shadows>
       <Suspense fallback={null}>
         <CameraController is2D={is2D} />
-        <ambientLight intensity={0.5} />
+        <ambientLight intensity={2} />
         <directionalLight position={[10, 10, 5]} intensity={1} castShadow />
-        <Environment preset="sunset" />
+        <directionalLight position={[-10, 5, -5]} intensity={1.5} />
+        <hemisphereLight args={["#ffffff", "#888888", 1.6]} />
 
         <Model
           modelId="model_1"
           path="/models/model1.glb"
           state={modelStates.model_1}
-          targetSize={1.7}
+          targetSize={1.5}
           otherModelPosition={new THREE.Vector3(
             modelStates.model_2.position.x,
             modelStates.model_2.position.y,

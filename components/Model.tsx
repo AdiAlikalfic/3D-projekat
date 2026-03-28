@@ -79,7 +79,7 @@ export default function Model({
       const newPosition = intersectPoint.current.clone().add(dragOffset.current)
 
       const distance = newPosition.distanceTo(otherModelPositionRef.current)
-      if(distance < 1.2) return
+      if(distance < 1.5) return
       ref.current.position.set(newPosition.x, 0, newPosition.z)
     }
 
@@ -147,7 +147,7 @@ export default function Model({
     raycaster.current.ray.intersectPlane(dragPlane.current, intersectPoint.current)
     const newPosition = intersectPoint.current.clone().add(dragOffset.current)
     const distance = newPosition.distanceTo(otherModelPosition)
-    if (distance < 2) return
+    if (distance < 3) return
     ref.current.position.set(newPosition.x, 0, newPosition.z)
   }
 
