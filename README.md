@@ -1,36 +1,129 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 3D Model Viewer
 
-## Getting Started
+A full-stack 3D web application built with Next.js, React Three Fiber, Three.js and Firebase Firestore.
 
-First, run the development server:
+## 🔗 Live Demo
+
+[nelsonkb-3d.vercel.app](https://3-d-projekat.vercel.app/)
+
+---
+
+## ✨ Features
+
+- 🧊 **Two interactive 3D GLB models** loaded and displayed in a real-time scene
+- 🖱️ **Drag & Drop** – move models freely across the scene
+- 🚧 **Collision detection** – models cannot overlap or occupy the same space
+- 🔄 **Model rotation** – intuitive side panel with slider and ±90° quick buttons
+- 📷 **2D / 3D view toggle** – switch between perspective and top-down orthographic camera
+- 💾 **Firebase Firestore sync** – every position and rotation change is saved instantly
+- 🔁 **Persistent state** – models return to their last saved position after page refresh
+- 🌐 **No authentication required** – open to all users
+
+---
+
+## 🛠️ Tech Stack
+
+| Technology             | Purpose                                    |
+| ---------------------- | ------------------------------------------ |
+| **Next.js 14**         | React framework, file-based routing, SSR   |
+| **React Three Fiber**  | React renderer for Three.js                |
+| **Three.js**           | 3D engine, raycasting, collision detection |
+| **@react-three/drei**  | R3F helpers (OrbitControls, useGLTF, Html) |
+| **Firebase Firestore** | NoSQL cloud database for state persistence |
+| **TypeScript**         | Type safety across the entire codebase     |
+| **Tailwind CSS**       | Utility-first styling                      |
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js 18+
+- npm or yarn
+- Firebase project with Firestore enabled
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/AdiAlikalfic/3D-projekat
+cd 3d-projekat
+
+# Install dependencies
+npm install
+```
+
+### Environment Variables
+
+Create a `.env.local` file in the root directory:
+
+```bash
+NEXT_PUBLIC_FIREBASE_API_KEY=your_api_key
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your_auth_domain
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=your_project_id
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your_storage_bucket
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
+NEXT_PUBLIC_FIREBASE_APP_ID=your_app_id
+```
+
+### Run locally
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📁 Project Structure
 
-## Learn More
+```
+moj-3d-projekat/
+├── app/
+│   ├── page.tsx          # Main entry point
+│   ├── layout.tsx        # Root layout
+│   └── scene.css         # Scene & UI styles
+├── components/
+│   ├── Scene.tsx          # 3D scene, camera, lighting, UI panels
+│   └── Model.tsx          # Individual 3D model with drag & collision logic
+├── lib/
+│   ├── firebase.ts        # Firebase initialization
+│   └── modelService.ts    # Firestore read/write functions
+├── types/
+│   └── index.ts           # TypeScript interfaces
+└── public/
+    └── models/
+        ├── model1.glb     # First 3D model
+        └── model2.glb     # Second 3D model
+```
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🗄️ Database Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+Firestore
+└── models (collection)
+    ├── model_1 (document)
+    │   ├── position: { x, y, z }
+    │   └── rotation: { x, y, z }
+    └── model_2 (document)
+        ├── position: { x, y, z }
+        └── rotation: { x, y, z }
+```
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📝 Notes
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- No login or authentication required – the app is open to all users
+- No real-time database listener – data is read once on page load and written on each change
+- Firestore is running in **test mode** (suitable for demo purposes)
+
+---
+
+## 📄 License
+
+This project was built as part of a Full Stack Developer interview task.
