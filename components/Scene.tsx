@@ -68,7 +68,7 @@ export default function Scene() {
   const handleDragEnd = useCallback(async (modelId: ModelId, newState: ModelState) => {
     // Ažuriraj lokalni React state s novom pozicijom/rotacijom
     setModelStates(prev => {
-      // prev je prethodni state - nikad ne mijenjaj state direktno!
+      // prev je prethodni state
       // Uvijek vraćaj novi objekt (immutability)
       if (!prev) return prev
       return {

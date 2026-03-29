@@ -79,7 +79,7 @@ export default function Model({
       const newPosition = intersectPoint.current.clone().add(dragOffset.current)
 
       const distance = newPosition.distanceTo(otherModelPositionRef.current)
-      if(distance < 1.5) return
+      if(distance < 1.7) return
       ref.current.position.set(newPosition.x, 0, newPosition.z)
     }
 
